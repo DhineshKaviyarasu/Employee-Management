@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Employee Management System
+		</title>
+	</head>
+	<body>
+		<div>
+		<h1>
+			Employee Management System
+		</h1>
+		<hr>
+		<h3>
+			Save Employee
+		</h3>
+		<form action="#" th:action="@{/save}" th:object="${employee}" method="post">
+			<input type="text" th:field="*{name}" placeholder="Employee name">
+			<input type="text" th:field="*{email}" placeholder="Employee email">
+			<button type="submit">Save Employee</button>
+		</form>
+		<hr>
+		<a th:href="@{/home}">Back to Employee List</a>
+		</div>
+	</body>
+</html>

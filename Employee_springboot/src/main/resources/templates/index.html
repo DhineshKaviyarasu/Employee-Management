@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee</title>
+</head>
+<body>
+    <div align="center">
+        <h3>Employee List</h3>
+        <a th:href="@{/addnew}">Add Employee</a>
+
+        <!-- Check if there are employees in the list -->
+        <th:block th:if="${not #lists.isEmpty(allemplist)}">
+            <table style="width: 80%;" border="1">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="employee : ${allemplist}">
+                        <td th:text="${employee.name}"></td>
+                        <td th:text="${employee.email}"></td>
+                        <td>
+                            <a th:href="@{/showupdateform/{id}(id=${employee.id})}">Update</a>
+                            <a th:href="@{/deletebyid/{id}(id=${employee.id})}">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </th:block>
+
+        <!-- Show a message if no employees are in the list -->
+        <th:block th:if="${#lists.isEmpty(allemplist)}">
+            <p>No employees in the database.</p>
+        </th:block>
+    </div>
+</body>
+</html>
